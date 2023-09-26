@@ -1,6 +1,7 @@
 package app
 
 import (
+	"fmt"
 	"imagedownloader/internal/config"
 	"io"
 	"net/url"
@@ -36,12 +37,14 @@ func DownloadImages(
 		return err
 	}
 
-	for _, link := range links {
+	linksCount := len(links)
+	for i, link := range links {
 		if strings.HasPrefix(link.String(), "/") {
 			link.Scheme = cfg.Url().Scheme
 			link.Host = cfg.Url().Host
 		}
 
+		fmt.Printf("Downloading image %d/%d ", i+1, linksCount)
 		image, err := dl.Download(link)
 		if err != nil {
 			return err
