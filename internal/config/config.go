@@ -1,7 +1,7 @@
-package domain
+package config
 
 import (
-	"fmt"
+	"errors"
 	"net/url"
 )
 
@@ -20,7 +20,7 @@ func (c Config) Flags() []string {
 
 func NewConfig(args []string) (*Config, error) {
 	if len(args) != 2 {
-		fmt.Println("Please, do learn how to return an error. Thanks")
+		return nil, errors.New("expected 2 arguments from cli")
 	}
 
 	url, err := url.Parse(args[1])

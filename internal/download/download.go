@@ -1,4 +1,4 @@
-package infrastructure
+package download
 
 import (
 	"io"
@@ -7,9 +7,9 @@ import (
 	"strings"
 )
 
-type Downloader struct{}
+type HttpDownloader struct{}
 
-func (d *Downloader) DownloadDocument(link *url.URL) (io.ReadCloser, error) {
+func (d HttpDownloader) Download(link *url.URL) (io.ReadCloser, error) {
 	strL := link.String()
 	if strings.HasPrefix(strL, "/") {
 		strL = ""

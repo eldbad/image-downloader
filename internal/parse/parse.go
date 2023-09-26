@@ -8,9 +8,9 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-type Parser struct{}
+type HtmlParser struct{}
 
-func (p Parser) GetImageLinks(body io.ReadCloser) ([]*url.URL, error) {
+func (p HtmlParser) GetImageLinks(body io.ReadCloser) ([]*url.URL, error) {
 	doc, err := goquery.NewDocumentFromReader(body)
 
 	var links []*url.URL

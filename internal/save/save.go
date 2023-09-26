@@ -1,13 +1,13 @@
-package infrastructure
+package save
 
 import (
 	"io"
 	"os"
 )
 
-type Saver struct{}
+type FileSystemSaver struct{}
 
-func (s *Saver) SaveFile(body io.ReadCloser, filename string) error {
+func (s FileSystemSaver) SaveImages(body io.ReadCloser, filename string) error {
 	f, err := os.Create(filename)
 	if err != nil {
 		return err
