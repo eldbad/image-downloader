@@ -44,7 +44,7 @@ func DownloadImages(
 			link.Host = cfg.Url().Host
 		}
 
-		fmt.Printf("Downloading image %d/%d ", i+1, linksCount)
+		fmt.Printf("Downloading image %d/%d\n", i+1, linksCount)
 		image, err := dl.Download(link)
 		if err != nil {
 			return err
